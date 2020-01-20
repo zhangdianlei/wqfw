@@ -58,7 +58,11 @@ if($act == 'dopost') {
 	$areaid 	= intval($areaid);
 	$streetid	= intval($streetid);
 	$title 		= trim(mhtmlspecialchars($title));
-	$content	= $mymps_global['cfg_post_editor'] == 1 ? $content : textarea_post_change($content) ;
+
+//  zhangdianlei 修改 2020-01-20 14:58
+//	$content	= $mymps_global['cfg_post_editor'] == 1 ? $content : textarea_post_change($content) ;
+	$content	= set_iframe_height($content);
+
 	$begintime 	= $timestamp;
 	$activetime	= $endtime 	= intval($endtime);
 	$endtime 	= ($endtime == 0)?0:(($endtime*3600*24)+$begintime);
@@ -379,6 +383,7 @@ if($act == 'dopost') {
 		if($mymps_global['cfg_post_editor'] == 1){
 			$acontent 	= get_editor('content','information','','400px','300px','include/kindeditor');
 		} else {
+//            $acontent 	= get_editor('content','default','','600px','300px','include/kindeditor');
 			$acontent = "<textarea name=\"content\" style=\"width:400px;height:300px;\" class=\"input\" require=\"true\" datatype=\"limit\" msg=\"请填写信息内容描述\"></textarea>";
 		}
 		

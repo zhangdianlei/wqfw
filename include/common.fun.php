@@ -184,6 +184,16 @@ function textarea_post_change($mymps_string)
 	return nl2br(str_replace(' ','&nbsp;',mhtmlspecialchars(trim($mymps_string))));
 }
 
+/**
+ * 给iframe设置增加最小高度和100%的宽度
+ * @param $mymps_string
+ * @return string
+ */
+function set_iframe_height($mymps_string)
+{
+    return str_replace("<iframe", "<iframe style=\"min-height: 400px;width: 100%;\"", $mymps_string);
+}
+
 function de_textarea_post_change($mymps_string)
 {
 	return str_replace('<br />',' ',str_replace('&nbsp;',' ',trim($mymps_string)));
